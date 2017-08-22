@@ -1,0 +1,1 @@
+Front end for full stack project (garden app) for GA WDI.
