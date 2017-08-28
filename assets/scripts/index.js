@@ -19,16 +19,25 @@ $(() => {
     $('#user-logout').hide()
     $('.new-garden').hide()
     $('.show-garden').hide()
-    $('.my-garden').hide()
+    $('.user-garden').hide()
+    $('.plant-query').hide()
+    $('.add-plants').hide()
+    $('.plant-search').hide()
+    $('#start-my-garden').hide()
   })
   // Set all user auth jquery
   $('.user-signup').on('submit', authEvents.onSignUp)
   $('.user-login').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
-})
-$('.new-garden').on('click', function () {
-  $('.plant-search').show()
+// $('.new-garden').on('click', function () {
+//   $('.add-plants').show()
+//   $('.my-garden').show()
+// })
+  $('#start-my-garden').on('submit', function () {
+    $('.add-plants').show()
+    $('.user-garden').show()
+  })
 })
 
 // user signs up

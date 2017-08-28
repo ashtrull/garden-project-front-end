@@ -7,12 +7,11 @@
 
   <!-- Do not add `link` tags unless you know what you are doing -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" type="text/css" href="./assets/styles/index.scss">
+  <link rel="stylesheet" type="text/scss" href="./assets/styles/index.scss">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Dosis" rel="stylesheet">
   <!-- Do not add `script` tags unless you know what you are doing -->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-  <script src="assets/scripts/index.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body class="container-fluid">
@@ -48,20 +47,18 @@
   </div>
   <div class="col-xs-8 center content">
     <div class="content">
-      <form class="new-garden" method="post">
-        <button type="submit" class="btn btn-primary start" name="button">Start My Garden</button>
-      </form>
-      <form class="plant-search" action="index.html" method="get">
+        <button type="submit" class="btn btn-primary start" id="start-my-garden" name="button">Start My Garden</button>
+      <form class="plant-search" action="search.php?go" method="post" id="plant-search-form">
         <input type="text" name="plant-name" value="" placeholder="Plant Name">
-        <button type="submit" class="btn btn-primary start" name="button">Search for Plants</button>
+        <button type="submit" class="btn btn-primary start" name="submit" value="Search">Search for Plants</button>
       </form>
     </div>
     <form class="show-garden" method="get">
       <button type="submit" class="btn btn-primary start" name="button">Show My Garden</button>
     </form>
-    <div class="my-garden" id="my-garden">
-      <h1>My Garden</h1>
-      <table class="my-garden" id="my-garden-table">
+    <div class="user-garden" id="my-garden">
+      <h3 class="user-garden" id="my-garden-header">My Garden</h3>
+      <table class="user-garden" id="my-garden-table">
         <tr>
           <th>Plant Name</th>
           <th>Start Seed Indoors (relative to frost date)</th>
@@ -75,6 +72,45 @@
           <td>30 days</td>
           <td>15 days after </td>
       </table>
+    </div>
+    <div class="plant-query" id="plant-query">
+      <h1>Plants</h1>
+      <table class="plant-query" id="plant-query-table">
+        <tr>
+          <th>Plant ID</th>
+          <th>Name</th>
+          <th>Start Seed Indoors (relative to frost date)</th>
+          <th>Growth Period</th>
+          <th>Plant Outdoors (relative to frost date)</th>
+          <!-- <th>Companion Plants</th> -->
+        </tr>
+      </table>
+    </div>
+    <div class="add-plants">
+      <form class="add-plants" action="index.html" method="post">
+        <input list="plants">
+        <datalist id="plants">
+        <option value="Beets" id=1>
+        <option value="Broccoli" id=2>
+        <option value="Brussel Sprouts" id=3>
+        <option value="Cabbage" id=4>
+        <option value="Carrots" id=5>
+        <option value="Cauliflower" id=6>
+        <option value="Collards" id=7>
+        <option value="Corn" id=8>
+        <option value="Cucumber" id=9>
+        <option value="Eggplant" id=10>
+        <option value="Lettuce" id=11>
+        <option value="Onion" id=12>
+        <option value="Peas" id=13>
+        <option value="Peppers" id=14>
+        <option value="Radish" id=15>
+        <option value="Spinach" id=16>
+        <option value="Tomato" id=17>
+  </datalist>
+  <button type="submit" name="button">Add To My Garden</button>
+      </form>
+      </div>
     </div>
 
 </body>
