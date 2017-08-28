@@ -2,13 +2,42 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const authEvents = require('./auth/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
 })
 
 // use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
 
 // use require without a reference to ensure a file is bundled
 require('./example')
+
+$(() => {
+  $(function () {
+    $('#change-pw').hide()
+    $('#user-logout').hide()
+    $('.new-garden').hide()
+    $('.show-garden').hide()
+    $('.my-garden').hide()
+  })
+  // Set all user auth jquery
+  $('.user-signup').on('submit', authEvents.onSignUp)
+  $('.user-login').on('submit', authEvents.onSignIn)
+  $('#change-pw').on('submit', authEvents.onChangePassword)
+  $('.user-logout').on('submit', authEvents.onSignOut)
+})
+$('.new-garden').on('click', function () {
+  $('.plant-search').show()
+})
+
+// user signs up
+// user signs in
+// options to change-pw and log-out appear
+// "start garden" button appears
+
+module.exports = {
+  authEvents,
+  config,
+  setAPIOrigin
+}
