@@ -3,6 +3,7 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const authEvents = require('./auth/events.js')
+const gardenEvents = require('./garden-api/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -24,19 +25,16 @@ $(() => {
     $('.add-plants').hide()
     $('.plant-search').hide()
     $('#start-my-garden').hide()
-  })
   // Set all user auth jquery
-  $('.user-signup').on('submit', authEvents.onSignUp)
-  $('.user-login').on('submit', authEvents.onSignIn)
-  $('#change-pw').on('submit', authEvents.onChangePassword)
-  $('.user-logout').on('submit', authEvents.onSignOut)
-// $('.new-garden').on('click', function () {
-//   $('.add-plants').show()
-//   $('.my-garden').show()
-// })
-  $('#start-my-garden').on('submit', function () {
-    $('.add-plants').show()
-    $('.user-garden').show()
+    $('.user-signup').on('submit', authEvents.onSignUp)
+    $('.user-login').on('submit', authEvents.onSignIn)
+    $('#change-pw').on('submit', authEvents.onChangePassword)
+    $('.user-logout').on('submit', authEvents.onSignOut)
+    $('#start-my-garden').on('submit', gardenEvents.onStartGarden () {
+      console.log('Start my garden')
+      $('.add-plants').show()
+      $('.user-garden').show()
+    })
   })
 })
 
