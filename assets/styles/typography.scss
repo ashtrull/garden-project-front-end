@@ -1,0 +1,25 @@
+$titlefontfamily: 'Bungee Shade', cursive;
+$bodyfontfamily: 'Dosis', sans-serif;
+
+body {
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: 40px auto;
+  max-width: $max-width;
+  padding: 0 10px;
+  // font-family: $body-font;
+
+  h1 {
+    line-height: $heading-line-height;
+    text-align: center;
+    font-family: $heading-font;
+  }
+
+  p {
+    display: block;
+    -webkit-margin-after: 1em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-end: 0;
+    -webkit-margin-start: 0;
+  }
+}
