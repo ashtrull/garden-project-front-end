@@ -30,8 +30,6 @@ const onAddPlant = function (event) {
   console.log(id)
   const user = app.user.id
   const plant = id
-  console.log('plant ' + plant)
-  console.log('user ' + user)
   api.addPlant(plant, user)
   .done(ui.addPlantSuccess)
   .fail(ui.addPlantFail)
