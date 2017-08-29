@@ -18,7 +18,7 @@ const signInSuccess = (data) => {
   app.user = data.user
   console.log(data)
   console.log('Successfully signed in!')
-  $('#sign-in-prompt').text('Signed in as ' + data.user.email)
+  $('#sign-in-prompt').text('Signed in as ' + app.user.email)
   $('.user-signup').hide()
   $('.user-login').hide()
   $('.user-logout').show()
@@ -33,7 +33,7 @@ const signInFail = () => {
 }
 
 const changePasswordSuccess = (data) => {
-  app.user = data.user
+  // app.user = data.user
   console.log('Password successfully changed.')
   $('#sign-in-prompt').text('Password successfully changed. Signed in as' + data.user.email)
 }
@@ -47,9 +47,12 @@ const signOutSuccess = (data) => {
   app.user = null
   console.log(data)
   console.log('Successfully signed out!')
-  $('#sign-in-prompt').text('Sign in to play!')
+  $('#sign-in-prompt').text('Sign in to create your garden!')
   $('.user-login').show()
   $('.user-signup').show()
+  $('.user-logout').hide()
+  $('#change-pw').hide()
+  $('.content').hide()
 }
 
 const signOutFail = (error) => {

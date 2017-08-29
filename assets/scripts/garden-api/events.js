@@ -4,6 +4,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
+const gardenEvents = require('./events.js')
 
 // when button is clicked search field for plants appears
 const onStartGarden = function (event) {
@@ -25,15 +26,13 @@ const onGetAllPlants = function (event) {
 
 const onAddPlant = function (event) {
   event.preventDefault()
-  console.log(event.target)
-  // const select = document.getElementById("plantlist")
-  // const plant = select.options[select.selectedIndex].value
-  // const plant = select[select.selectedIndex].value
+  const id = event.target.id
+  console.log(id)
   const user = app.user.id
-  console.log('data ' + data)
+  const plant = id
   console.log('plant ' + plant)
   console.log('user ' + user)
-  api.addPlant(data)
+  api.addPlant(plant, user)
   .done(ui.addPlantSuccess)
   .fail(ui.addPlantFail)
 }
