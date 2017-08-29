@@ -31,20 +31,17 @@ $(() => {
   $('.user-login').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
+  $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
+  // $('.add-plants-form').on('submit', console.log('plant form'), gardenEvents.onAddPlant)
+  $('.show-plants').on('submit', gardenEvents.onGetAllPlants)
+  console.log('Adding plant')
+  $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
 })
 
-const addHandlers = function () {
-  $('#start-garden-form').on('submit', console.log('start'), gardenEvents.onStartGarden)
-  $('.add-plants-form').on('submit', console.log('plant form'), gardenEvents.onAddPlant)
-  $('.show-plants').on('submit', console.log('all plants'), gardenEvents.onGetAllPlants)
-}
-
-addHandlers()
 // user signs up
 // user signs in
 // options to change-pw and log-out appear
 // "start garden" button appears
 
 module.exports = {
-  addHandlers
 }

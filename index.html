@@ -93,10 +93,10 @@
         </thead>
       </table>
     </div>
-    <div class="add-plants">
+    <!-- <div class="add-plants">
       <form class="add-plants-form" action="index.html" method="post">
-        <!-- <input list="plants"> -->
-        <select name="plant-dropdown" id="plant-list">
+        <!- <input list="plants"> -->
+        <!-- <select name="plant-dropdown" id="plant-list">
         <option name="beets" type="text" value="Beets" id=1>Beets</option>
         <option value="Broccoli" id=2>Broccoli</option>
         <option value="Brussel Sprouts" id=3>Brussel Sprouts</option>
@@ -116,8 +116,8 @@
         <option value="Tomato" id=17>Tomato</option>
   </select>
   <button type="submit" class="btn btn-primary start" onclick="getIndex()" name="button">Add To My Garden</button>
-      </form>
-      </div>
+      </form> -->
+      <!-- </div> -->
       <div id='plants-container'></div>
 
       <script id="plants-template" type="text/x-handlebars-template">
@@ -139,7 +139,8 @@
             <td>{{indoor_start}}</td>
             <td>{{growth_period}}</td>
             <td>{{outdoor_start}}</td>
-            <td><form id="add-plant-table-form"><button class="add-plant-btn">Add To My Garden</button></form></td>
+            <td><button id='{{id}}' type="button" class="add-plant-btn btn btn-primary start">Add {{name}} To My Garden</button></td>
+              <!-- <form id='{{id}}' class='add-plants-table-form'></form></td> -->
           </tr>
           {{/each}}
       </script>

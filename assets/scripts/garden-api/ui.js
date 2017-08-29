@@ -7,14 +7,9 @@ const getPlantsSuccess = function (data) {
   console.table(data.plants)
   $('#plants-container').show()
   const plantData = data.plants
-  console.log('create data var')
   const createHTML = function (data) {
-    console.log('testing from our function')
-    console.log(data)
     const rawTemplate = $('#plants-template').html()
-    console.log(rawTemplate)
     const compiledTemplate = Handlebars.compile(rawTemplate)
-    console.log(compiledTemplate)
     const context = {
       plants: data
     }
