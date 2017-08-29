@@ -63,8 +63,6 @@ const signOut = (data) => {
 }
 
 module.exports = {
-  app,
-  config,
   signUp,
   signIn,
   changePassword,

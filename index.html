@@ -47,12 +47,15 @@
   </div>
   <div class="col-xs-8 center content">
     <div class="content">
-      <form>
+      <form id="start-garden-form">
         <button type="submit" class="btn btn-primary start" id="start-my-garden" name="button">Start My Garden</button>
       </form>
       <form class="plant-search" action="search.php?go" method="post" id="plant-search-form">
         <input type="text" name="plant-name" value="" placeholder="Plant Name">
         <button type="submit" class="btn btn-primary start" name="submit" value="Search">Search for Plants</button>
+      </form>
+      <form class="show-plants">
+        <button type="submit" class="show-plants btn btn-primary start" id="show-plants-btn" name="button">Show All Plants</button>
       </form>
     </div>
     <form class="show-garden" method="get">
@@ -78,42 +81,70 @@
     <div class="plant-query" id="plant-query">
       <h1>Plants</h1>
       <table class="plant-query" id="plant-query-table">
-        <tr>
+        <thead>
+          <tr>
           <th>Plant ID</th>
           <th>Name</th>
           <th>Start Seed Indoors (relative to frost date)</th>
           <th>Growth Period</th>
           <th>Plant Outdoors (relative to frost date)</th>
           <!-- <th>Companion Plants</th> -->
-        </tr>
+          <tr>
+        </thead>
       </table>
     </div>
     <div class="add-plants">
-      <form class="add-plants" action="index.html" method="post">
-        <input list="plants">
-        <datalist id="plants">
-        <option value="Beets" id=1>
-        <option value="Broccoli" id=2>
-        <option value="Brussel Sprouts" id=3>
-        <option value="Cabbage" id=4>
-        <option value="Carrots" id=5>
-        <option value="Cauliflower" id=6>
-        <option value="Collards" id=7>
-        <option value="Corn" id=8>
-        <option value="Cucumber" id=9>
-        <option value="Eggplant" id=10>
-        <option value="Lettuce" id=11>
-        <option value="Onion" id=12>
-        <option value="Peas" id=13>
-        <option value="Peppers" id=14>
-        <option value="Radish" id=15>
-        <option value="Spinach" id=16>
-        <option value="Tomato" id=17>
-  </datalist>
-  <button type="submit" name="button">Add To My Garden</button>
+      <form class="add-plants-form" action="index.html" method="post">
+        <!-- <input list="plants"> -->
+        <select name="plant-dropdown" id="plant-list">
+        <option name="beets" type="text" value="Beets" id=1>Beets</option>
+        <option value="Broccoli" id=2>Broccoli</option>
+        <option value="Brussel Sprouts" id=3>Brussel Sprouts</option>
+        <option value="Cabbage" id=4>Cabbage</option>
+        <option value="Carrots" id=5>Carrots</option>
+        <option value="Cauliflower" id=6>Cauliflower</option>
+        <option value="Collards" id=7>Collards</option>
+        <option value="Corn" id=8>Corn</option>
+        <option value="Cucumber" id=9>Cucumber</option>
+        <option value="Eggplant" id=10>Eggplant</option>
+        <option value="Lettuce" id=11>Lettuce</option>
+        <option value="Onion" id=12>Onion</option>
+        <option value="Peas" id=13>Peas</option>
+        <option value="Peppers" id=14>Peppers</option>
+        <option value="Radish" id=15>Radish</option>
+        <option value="Spinach" id=16>Spinach</option>
+        <option value="Tomato" id=17>Tomato</option>
+  </select>
+  <button type="submit" class="btn btn-primary start" onclick="getIndex()" name="button">Add To My Garden</button>
       </form>
       </div>
-    </div>
+      <div id='plants-container'></div>
+
+      <script id="plants-template" type="text/x-handlebars-template">
+        <table class="all-plants-table">
+          <thead>
+            <tr>
+              <th>Plant ID</th>
+              <th>Name</th>
+              <th>Start Seed Indoors (relative to frost date)</th>
+              <th>Indoor Growth Period</th>
+              <th>Plant Outdoors (relative to frost date)</th>
+            </tr>
+          </thead>
+        <tbody>
+          {{#each plants}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{indoor_start}}</td>
+            <td>{{growth_period}}</td>
+            <td>{{outdoor_start}}</td>
+            <td><form id="add-plant-table-form"><button class="add-plant-btn">Add To My Garden</button></form></td>
+          </tr>
+          {{/each}}
+      </script>
+      </div>
+      <script src="assets/handlebars-v4.0.10.js"></script>
 
 </body>
 

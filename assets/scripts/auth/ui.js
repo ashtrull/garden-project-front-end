@@ -23,7 +23,8 @@ const signInSuccess = (data) => {
   $('.user-login').hide()
   $('.user-logout').show()
   $('#change-pw').show()
-  $('#start-my-garden').show()
+  $('#start-garden-form').show()
+  $('.show-plants').show()
 }
 
 const signInFail = () => {
@@ -31,7 +32,8 @@ const signInFail = () => {
   $('#sign-in-prompt').text('Email/password combination not found')
 }
 
-const changePasswordSuccess = () => {
+const changePasswordSuccess = (data) => {
+  app.user = data.user
   console.log('Password successfully changed.')
   $('#sign-in-prompt').text('Password successfully changed. Signed in as' + data.user.email)
 }
