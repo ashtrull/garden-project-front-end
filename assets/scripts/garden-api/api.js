@@ -14,8 +14,8 @@ const allPlants = function (data) {
 }
 
 const addPlant = function (plant, user) {
-  console.log(app.user.token)
-  console.log(plant, user)
+  console.log('Token:' + app.user.token)
+  console.log('Plant:' + plant + 'User: ' + user)
   return $.ajax({
     url: app.host + '/gardens',
     method: 'POST',
