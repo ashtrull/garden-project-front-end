@@ -25,18 +25,28 @@ h1 {
   background-color: #fff;
   color: #8c2f5e;
   padding: 5px;
+  clear: both;
 }
 
 h3 {
   font-family: "Dosis";
   font-size: 24px;
   color: #10621e;
+  text-align: center;
 }
 
 h4 {
   font-family: "Dosis";
   font-size: 24px;
   color: #fff;
+}
+
+img {
+  width: 200px;
+  height: 160px;
+  position: inherit;
+  margin: 10px auto;
+  padding: 10px;
 }
 
 body {
