@@ -7,12 +7,11 @@
 
   <!-- Do not add `link` tags unless you know what you are doing -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" type="text/css" href="./assets/styles/index.scss">
+  <link rel="stylesheet" type="text/scss" href="./assets/styles/index.scss">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Dosis" rel="stylesheet">
   <!-- Do not add `script` tags unless you know what you are doing -->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-  <script src="assets/scripts/index.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body class="container-fluid">
@@ -48,20 +47,23 @@
   </div>
   <div class="col-xs-8 center content">
     <div class="content">
-      <form class="new-garden" method="post">
-        <button type="submit" class="btn btn-primary start" name="button">Start My Garden</button>
+      <form id="start-garden-form">
+        <button type="submit" class="btn btn-primary start" id="start-my-garden" name="button">Start My Garden</button>
       </form>
-      <form class="plant-search" action="index.html" method="get">
+      <form class="plant-search" action="search.php?go" method="post" id="plant-search-form">
         <input type="text" name="plant-name" value="" placeholder="Plant Name">
-        <button type="submit" class="btn btn-primary start" name="button">Search for Plants</button>
+        <button type="submit" class="btn btn-primary start" name="submit" value="Search">Search for Plants</button>
+      </form>
+      <form class="show-plants">
+        <button type="submit" class="show-plants btn btn-primary start" id="show-plants-btn" name="button">Show All Plants</button>
       </form>
     </div>
     <form class="show-garden" method="get">
       <button type="submit" class="btn btn-primary start" name="button">Show My Garden</button>
     </form>
-    <div class="my-garden" id="my-garden">
-      <h1>My Garden</h1>
-      <table class="my-garden" id="my-garden-table">
+    <div class="user-garden" id="my-garden">
+      <h3 class="user-garden" id="my-garden-header">My Garden</h3>
+      <table class="user-garden" id="my-garden-table">
         <tr>
           <th>Plant Name</th>
           <th>Start Seed Indoors (relative to frost date)</th>
@@ -76,6 +78,73 @@
           <td>15 days after </td>
       </table>
     </div>
+    <div class="plant-query" id="plant-query">
+      <h1>Plants</h1>
+      <table class="plant-query" id="plant-query-table">
+        <thead>
+          <tr>
+          <th>Plant ID</th>
+          <th>Name</th>
+          <th>Start Seed Indoors (relative to frost date)</th>
+          <th>Growth Period</th>
+          <th>Plant Outdoors (relative to frost date)</th>
+          <!-- <th>Companion Plants</th> -->
+          <tr>
+        </thead>
+      </table>
+    </div>
+    <div class="add-plants">
+      <form class="add-plants-form" action="index.html" method="post">
+        <!-- <input list="plants"> -->
+        <select name="plant-dropdown" id="plant-list">
+        <option name="beets" type="text" value="Beets" id=1>Beets</option>
+        <option value="Broccoli" id=2>Broccoli</option>
+        <option value="Brussel Sprouts" id=3>Brussel Sprouts</option>
+        <option value="Cabbage" id=4>Cabbage</option>
+        <option value="Carrots" id=5>Carrots</option>
+        <option value="Cauliflower" id=6>Cauliflower</option>
+        <option value="Collards" id=7>Collards</option>
+        <option value="Corn" id=8>Corn</option>
+        <option value="Cucumber" id=9>Cucumber</option>
+        <option value="Eggplant" id=10>Eggplant</option>
+        <option value="Lettuce" id=11>Lettuce</option>
+        <option value="Onion" id=12>Onion</option>
+        <option value="Peas" id=13>Peas</option>
+        <option value="Peppers" id=14>Peppers</option>
+        <option value="Radish" id=15>Radish</option>
+        <option value="Spinach" id=16>Spinach</option>
+        <option value="Tomato" id=17>Tomato</option>
+  </select>
+  <button type="submit" class="btn btn-primary start" onclick="getIndex()" name="button">Add To My Garden</button>
+      </form>
+      </div>
+      <div id='plants-container'></div>
+
+      <script id="plants-template" type="text/x-handlebars-template">
+        <table class="all-plants-table">
+          <thead>
+            <tr>
+              <th>Plant ID</th>
+              <th>Name</th>
+              <th>Start Seed Indoors (relative to frost date)</th>
+              <th>Indoor Growth Period</th>
+              <th>Plant Outdoors (relative to frost date)</th>
+            </tr>
+          </thead>
+        <tbody>
+          {{#each plants}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{indoor_start}}</td>
+            <td>{{growth_period}}</td>
+            <td>{{outdoor_start}}</td>
+            <td><form id="add-plant-table-form"><button class="add-plant-btn">Add To My Garden</button></form></td>
+          </tr>
+          {{/each}}
+      </script>
+      </div>
+      <script src="assets/handlebars-v4.0.10.js"></script>
 
 </body>
 
