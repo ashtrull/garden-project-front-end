@@ -26,13 +26,22 @@ const onGetAllPlants = function (event) {
 
 const onAddPlant = function (event) {
   event.preventDefault()
-  const id = event.target.id
+  // const id = event.target.id
+  const id = $(this).data('id')
   console.log(id)
   const user = app.user.id
   const plant = id
   api.addPlant(plant, user)
   .done(ui.addPlantSuccess)
   .fail(ui.addPlantFail)
+}
+
+const onShowMyGarden = function (event) {
+  event.preventDefault()
+  const user = app.user.id
+  api.showGarden(user)
+  .done(ui.showGardenSuccess)
+  .fail(ui.showGardenFail)
 }
 
 // user can type in a plant name to search for that plants
@@ -45,5 +54,6 @@ const onAddPlant = function (event) {
 module.exports = {
   onGetAllPlants,
   onStartGarden,
-  onAddPlant
+  onAddPlant,
+  onShowMyGarden
 }

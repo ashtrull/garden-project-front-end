@@ -30,9 +30,23 @@ const addPlant = function (plant, user) {
     }
   })
 }
-// how to get this to display?
+
+const showGarden = function (user) {
+  console.log(user)
+  return $.ajax({
+    url: app.host + '/gardens',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    data: {
+      'user_id': app.user.id
+    }
+  })
+}
 
 module.exports = {
   allPlants,
-  addPlant
+  addPlant,
+  showGarden
 }
