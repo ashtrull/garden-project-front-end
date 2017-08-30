@@ -18,6 +18,7 @@ The game was developed in multiple phases:
   - I drew a logic map of the different elements of my app using an ERD diagram to help me identify the attributes of each object as well as their relationships to each other.
   - I made lists of the "Must-haves" and "Nice to have" to identify what the minimim viable version of my app would be and what I hope to develop over a longer period.
   - Check out images of my wireframes, user stories, and map on imgur:
+  [![ERD Diagram](https://github.com/ashtrull/garden-project-front-end/blob/master/lib/ERD%20Diagram%20for%20Garden-Project-Front-End.png?raw=true)]
 
 2. API Set-up
   - Build scaffold for all the different objects in the app: plants, gardens, and users. The scaffold includes building a route, controller, model, and serializer for each.
