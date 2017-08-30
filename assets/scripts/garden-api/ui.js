@@ -15,22 +15,46 @@ const getPlantsSuccess = function (data) {
     }
     const compiledHTML = compiledTemplate(context)
     $('#plants-container').append(compiledHTML)
-    //     data.ourGeneratedHTML = compiledTemplate(data)
-    // // plants: data
-    // console.log(ourGeneratedHTML)
-    // const plantsContainer = document.getElementById('plants-container')
-    // plantsContainer.innerHTML = ourGeneratedHTML
-    // console.log('innerHTML placed')
   }
   createHTML(plantData)
 }
 
-const addPlantSuccess = function (data) {
-
+const getPlantsFail = error => {
+  console.error(error)
 }
 
-const addPlantFail = function (data) {
+const addPlantSuccess = function (data) {
+  console.log(data)
+  console.log('Added plant ' + data.garden.plant_id)
+}
 
+const addPlantFail = error => {
+  console.error(error)
+}
+
+const showGardenSuccess = function (data) {
+  console.log(data)
+  $('#garden-container').show()
+  const gardenData = data.gardens
+  console.log('garden data = ' + gardenData)
+  const createHTML = function (data) {
+    const rawTemplate = $('#gardens-template').html()
+    console.log('raw template = ' + rawTemplate)
+    const compiledTemplate = Handlebars.compile(rawTemplate)
+    console.log('compiled template = ' + compiledTemplate)
+    const context = {
+      gardens: data
+    }
+    const compiledHTML = compiledTemplate(context)
+    console.log('compiled HTML = ' + compiledHTML)
+    $('#garden-container').append(compiledHTML)
+  }
+  createHTML(gardenData)
+}
+
+const removePlantSuccess = function (id) {
+  console.log('Remove plant success')
+  $('.all-plants-table #1').remove()
 }
 
 const fail = (error) => {
@@ -64,7 +88,10 @@ const fail = (error) => {
 
 module.exports = {
   getPlantsSuccess,
+  getPlantsFail,
   addPlantSuccess,
   addPlantFail,
+  showGardenSuccess,
+  removePlantSuccess,
   fail
 }
