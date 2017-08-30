@@ -60,94 +60,78 @@
         <button type="submit" class="show-plants btn btn-primary start" id="show-plants-btn" name="button">Show All Plants</button>
       </form>
     </div>
-    <form class="show-garden" method="get">
+    <form class="show-garden" id="show-my-garden" method="get">
       <button type="submit" class="btn btn-primary start" name="button">Show My Garden</button>
     </form>
-    <div class="user-garden" id="my-garden">
-      <h3 class="user-garden" id="my-garden-header">My Garden</h3>
-      <table class="user-garden" id="my-garden-table">
-        <tr>
-          <th>Plant Name</th>
-          <th>Start Seed Indoors (relative to frost date)</th>
-          <th>Growth Period</th>
-          <th>Plant Outdoors (relative to frost date)</th>
-          <!-- <th>Companion Plants</th> -->
-        </tr>
-        <tr>
-          <td>Mango</td>
-          <td>23 days before</td>
-          <td>30 days</td>
-          <td>15 days after </td>
-      </table>
+    <h3 class="user-garden" id="my-garden-header">My Garden</h3>
+    <div class="user-garden" id="garden-container">
+      <script id="gardens-template" type="text/x-handlebars-template">
+        <table class="user-garden" id="my-garden-table">
+          <thead>
+            <tr>
+              <th>Garden ID</th>
+              <th>Plant ID</th>
+              <th>User ID</th>
+              <!-- <th>Companion Plants</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            {{#each gardens}}
+            <tr>
+              <td>{{id}}</td>
+              <td>{{plant_id}}</td>
+              <td>{{user_id}}</td>
+              <td><button data-id='{{id}}' type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </script>
     </div>
-    <div class="plant-query" id="plant-query">
+    <!-- <div class="plant-query" id="plant-query">
       <h1>Plants</h1>
       <table class="plant-query" id="plant-query-table">
         <thead>
           <tr>
-          <th>Plant ID</th>
-          <th>Name</th>
-          <th>Start Seed Indoors (relative to frost date)</th>
-          <th>Growth Period</th>
-          <th>Plant Outdoors (relative to frost date)</th>
-          <!-- <th>Companion Plants</th> -->
-          <tr>
+            <th>Plant ID</th>
+            <th>Name</th>
+            <th>Start Seed Indoors (relative to frost date)</th>
+            <th>Growth Period</th>
+            <th>Plant Outdoors (relative to frost date)</th>
+            <!-<th>Companion Plants</th> -->
+            <!-- <tr>
         </thead>
       </table>
-    </div>
-    <!-- <div class="add-plants">
-      <form class="add-plants-form" action="index.html" method="post">
-        <!- <input list="plants"> -->
-        <!-- <select name="plant-dropdown" id="plant-list">
-        <option name="beets" type="text" value="Beets" id=1>Beets</option>
-        <option value="Broccoli" id=2>Broccoli</option>
-        <option value="Brussel Sprouts" id=3>Brussel Sprouts</option>
-        <option value="Cabbage" id=4>Cabbage</option>
-        <option value="Carrots" id=5>Carrots</option>
-        <option value="Cauliflower" id=6>Cauliflower</option>
-        <option value="Collards" id=7>Collards</option>
-        <option value="Corn" id=8>Corn</option>
-        <option value="Cucumber" id=9>Cucumber</option>
-        <option value="Eggplant" id=10>Eggplant</option>
-        <option value="Lettuce" id=11>Lettuce</option>
-        <option value="Onion" id=12>Onion</option>
-        <option value="Peas" id=13>Peas</option>
-        <option value="Peppers" id=14>Peppers</option>
-        <option value="Radish" id=15>Radish</option>
-        <option value="Spinach" id=16>Spinach</option>
-        <option value="Tomato" id=17>Tomato</option>
-  </select>
-  <button type="submit" class="btn btn-primary start" onclick="getIndex()" name="button">Add To My Garden</button>
-      </form> -->
-      <!-- </div> -->
-      <div id='plants-container'></div>
-
-      <script id="plants-template" type="text/x-handlebars-template">
-        <table class="all-plants-table">
-          <thead>
-            <tr>
-              <th>Plant ID</th>
-              <th>Name</th>
-              <th>Start Seed Indoors (relative to frost date)</th>
-              <th>Indoor Growth Period</th>
-              <th>Plant Outdoors (relative to frost date)</th>
-            </tr>
-          </thead>
+    </div> -->
+    <div id='plants-container'></div>
+    <script id="plants-template" type="text/x-handlebars-template">
+      <table class="all-plants-table">
+        <thead>
+          <tr>
+            <th>Plant ID</th>
+            <th>Name</th>
+            <th>Start Seed Indoors (relative to frost date)</th>
+            <th>Indoor Growth Period</th>
+            <th>Plant Outdoors (relative to frost date)</th>
+          </tr>
+        </thead>
         <tbody>
           {{#each plants}}
-          <tr>
+          <tr id={{id}}>
             <td>{{id}}</td>
             <td>{{name}}</td>
             <td>{{indoor_start}}</td>
             <td>{{growth_period}}</td>
             <td>{{outdoor_start}}</td>
             <td><button data-id='{{id}}' type="button" class="add-plant-btn btn btn-primary start">Add {{name}} To My Garden</button></td>
-              <!-- <form id='{{id}}' class='add-plants-table-form'></form></td> -->
+            <!-- <form id='{{id}}' class='add-plants-table-form'></form></td> -->
           </tr>
           {{/each}}
-      </script>
-      </div>
-      <script src="assets/handlebars-v4.0.10.js"></script>
+        </tbody>
+      </table>
+    </script>
+  </div>
+  <script src="assets/handlebars-v4.0.10.js"></script>
 
 </body>
 

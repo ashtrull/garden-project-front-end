@@ -34,7 +34,7 @@ const addPlant = function (plant, user) {
 const showGarden = function (user) {
   console.log(user)
   return $.ajax({
-    url: app.host + '/gardens',
+    url: app.host + '/gardens?user_id=' + app.user.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
@@ -45,8 +45,21 @@ const showGarden = function (user) {
   })
 }
 
+const removePlant = function (garden) {
+  console.log('Token:' + app.user.token)
+  console.log('Garden: ' + garden)
+  return $.ajax({
+    url: app.host + '/gardens/' + garden,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    }
+  })
+}
+
 module.exports = {
   allPlants,
   addPlant,
-  showGarden
+  showGarden,
+  removePlant
 }

@@ -36,7 +36,8 @@ $(() => {
   $('.show-plants').on('submit', gardenEvents.onGetAllPlants)
   console.log('Adding plant')
   $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
-  $('#start-my-garden').on('click', gardenEvents.onShowMyGarden)
+  $(document).on('click', '.remove-plant-btn', gardenEvents.onRemovePlant)
+  $('#start-garden-form').on('click', gardenEvents.onShowMyGarden)
 })
 
 // user signs up

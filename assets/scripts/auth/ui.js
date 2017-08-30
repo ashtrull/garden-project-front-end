@@ -25,6 +25,7 @@ const signInSuccess = (data) => {
   $('#change-pw').show()
   $('#start-garden-form').show()
   $('.show-plants').show()
+  $('content').show()
 }
 
 const signInFail = () => {

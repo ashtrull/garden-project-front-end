@@ -4,7 +4,6 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
-const gardenEvents = require('./events.js')
 
 // when button is clicked search field for plants appears
 const onStartGarden = function (event) {
@@ -44,6 +43,18 @@ const onShowMyGarden = function (event) {
   .fail(ui.showGardenFail)
 }
 
+const onRemovePlant = function (event) {
+  event.preventDefault()
+  const id = $(this).data('id')
+  console.log(id)
+  const user = app.user.id
+  const garden = id
+  console.log('garden-id = ' + garden)
+  api.removePlant(garden)
+    .done(ui.removePlantSuccess(id))
+    .fail(ui.removePlantFail)
+}
+
 // user can type in a plant name to search for that plants
 // user can select plants to "add to my garden" (type plant name in form? checkbox?)
 // user can click a button to "see my garden"
@@ -55,5 +66,6 @@ module.exports = {
   onGetAllPlants,
   onStartGarden,
   onAddPlant,
-  onShowMyGarden
+  onShowMyGarden,
+  onRemovePlant
 }
