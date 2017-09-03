@@ -31,13 +31,20 @@ $(() => {
   $('.user-login').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
-  $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
-  // $('.add-plants-form').on('submit', console.log('plant form'), gardenEvents.onAddPlant)
+  // is this the click handler for show my garden? not sure so i'm commenting out
+  // $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
+  // click handler to show all plants
   $('.show-plants').on('submit', gardenEvents.onGetAllPlants)
-  console.log('Adding plant')
+  // click handler to add a single plant
   $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
-  $(document).on('click', '.remove-plant-btn', gardenEvents.onRemovePlant)
-  $('#start-garden-form').on('click', gardenEvents.onShowMyGarden)
+  // click handler to remove a single plant
+  $(document).on('click', '.remove-plant-btn', function () {
+    gardenEvents.onRemovePlant
+    $(this).parents('tr').remove()
+  })
+  $('#start-garden-form').on('click', function () {
+    gardenEvents.onShowMyGarden
+  })
 })
 
 // user signs up

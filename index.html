@@ -63,8 +63,9 @@
     <form class="show-garden" id="show-my-garden" method="get">
       <button type="submit" class="btn btn-primary start" name="button">Show My Garden</button>
     </form>
-    <h3 class="user-garden" id="my-garden-header">My Garden</h3>
+    <section class="user-garden" id="my-garden-view">
     <div class="user-garden" id="garden-container">
+    <h3 class="user-garden" id="my-garden-header">My Garden</h3>
       <script id="gardens-template" type="text/x-handlebars-template">
         <table class="user-garden" id="my-garden-table">
           <thead>
@@ -81,13 +82,14 @@
               <td>{{id}}</td>
               <td>{{plant_id}}</td>
               <td>{{user_id}}</td>
-              <td><button data-id='{{id}}' type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button></td>
+              <td><button data-id='row {{id}}' type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button></td>
             </tr>
             {{/each}}
           </tbody>
         </table>
       </script>
     </div>
+  </section>
     <!-- <div class="plant-query" id="plant-query">
       <h1>Plants</h1>
       <table class="plant-query" id="plant-query-table">
@@ -103,7 +105,8 @@
         </thead>
       </table>
     </div> -->
-    <div id='plants-container'></div>
+    <section id='all-plants-view'>
+    <div id='plants-container'>
     <script id="plants-template" type="text/x-handlebars-template">
       <table class="all-plants-table">
         <thead>
@@ -117,7 +120,7 @@
         </thead>
         <tbody>
           {{#each plants}}
-          <tr id={{id}}>
+          <tr>
             <td>{{id}}</td>
             <td>{{name}}</td>
             <td>{{indoor_start}}</td>
@@ -129,8 +132,9 @@
           {{/each}}
         </tbody>
       </table>
-    </script>
   </div>
+</section>
+</script>
   <script src="assets/handlebars-v4.0.10.js"></script>
 
 </body>
