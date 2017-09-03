@@ -49,14 +49,14 @@
   <div class="col-xs-8 center content">
     <a href="http://imgur.com/n3YQG3y"><img src="http://i.imgur.com/n3YQG3y.jpg" title="source: imgur.com" /></a>
     <div class="content">
-      <form id="start-garden-form">
+      <!-- <form id="start-garden-form">
         <button type="submit" class="btn btn-primary start" id="start-my-garden" name="button">Show My Garden</button>
-      </form>
+      </form> -->
       <form class="plant-search" action="search.php?go" method="post" id="plant-search-form">
         <input type="text" name="plant-name" value="" placeholder="Plant Name">
         <button type="submit" class="btn btn-primary start" name="submit" value="Search">Search for Plants</button>
       </form>
-      <form class="show-plants">
+      <form class="show-plants" id="show-all-plants" method="get">
         <button type="submit" class="show-plants btn btn-primary start" id="show-plants-btn" name="button">Show All Plants</button>
       </form>
     </div>
@@ -105,10 +105,10 @@
         </thead>
       </table>
     </div> -->
-    <section id='all-plants-view'>
-    <div id='plants-container'>
-    <script id="plants-template" type="text/x-handlebars-template">
-      <table class="all-plants-table">
+    <section class="all-plants" id='all-plants-view'>
+    <div class="all-plants" id='plants-container'>
+    <script class="all-plants" id="plants-template" type="text/x-handlebars-template">
+      <table class="all-plants" id="all-plants-table">
         <thead>
           <tr>
             <th>Plant ID</th>

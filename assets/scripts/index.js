@@ -23,8 +23,8 @@ $(() => {
   $('.plant-query').hide()
   $('.add-plants').hide()
   $('.plant-search').hide()
-  $('#start-garden-form').hide()
-  $('.show-plants').hide()
+  $('#show-my-garden').hide()
+  $('#show-all-plants').hide()
   // $('#start-my-garden').hide()
   // Set all user auth jquery
   $('.user-signup').on('submit', authEvents.onSignUp)
@@ -34,16 +34,14 @@ $(() => {
   // is this the click handler for show my garden? not sure so i'm commenting out
   // $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
   // click handler to show all plants
-  $('.show-plants').on('submit', gardenEvents.onGetAllPlants)
+  $('#show-all-plants').on('submit', gardenEvents.onGetAllPlants)
+  $('#show-my-garden').on('submit', gardenEvents.onShowMyGarden)
   // click handler to add a single plant
   $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
   // click handler to remove a single plant
   $(document).on('click', '.remove-plant-btn', function () {
     gardenEvents.onRemovePlant
     $(this).parents('tr').remove()
-  })
-  $('#start-garden-form').on('click', function () {
-    gardenEvents.onShowMyGarden
   })
 })
 

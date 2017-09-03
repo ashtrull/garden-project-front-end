@@ -23,8 +23,8 @@ const signInSuccess = (data) => {
   $('.user-login').hide()
   $('.user-logout').show()
   $('#change-pw').show()
-  $('#start-garden-form').show()
-  $('.show-plants').show()
+  $('#show-all-plants').show()
+  $('#show-my-garden').show()
   $('content').show()
 }
 
