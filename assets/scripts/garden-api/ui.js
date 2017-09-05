@@ -63,11 +63,12 @@ const removePlantFail = function (error) {
   console.error(error)
 }
 
-const updatePlantSuccess = function (id) {
+const addNoteSuccess = function (id, note) {
+  $(this).parents('tr#notes').append(note)
   console.log('Plant' + id + 'was updated')
 }
 
-const updatePlantFail = function (error) {
+const addNoteFail = function (error) {
   console.error(error)
 }
 
@@ -83,7 +84,7 @@ module.exports = {
   showGardenSuccess,
   removePlantSuccess,
   removePlantFail,
-  updatePlantSuccess,
-  updatePlantFail,
+  addNoteSuccess,
+  addNoteFail,
   fail
 }
