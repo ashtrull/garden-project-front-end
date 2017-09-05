@@ -45,7 +45,7 @@ const onShowMyGarden = function (event) {
 
 const onRemovePlant = function (event) {
   event.preventDefault()
-  const id = $(this).data('id')
+  const id = $(this).data('data-id')
   console.log(id)
   const user = app.user.id
   const garden = id
@@ -53,6 +53,19 @@ const onRemovePlant = function (event) {
   api.removePlant(garden)
     .done(ui.removePlantSuccess(id))
     .fail(ui.removePlantFail)
+}
+
+const onAddNote = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const id = $(this).data('id')
+  console.log(data)
+  const user = app.user.id
+  const garden = id
+  console.log('garden-id ' + garden)
+  api.addPlantNote(garden, note)
+    .done(ui.updatePlantSuccess(id))
+    .fail(ui.updatePlantFail)
 }
 
 // user can type in a plant name to search for that plants
@@ -67,5 +80,6 @@ module.exports = {
   // onStartGarden,
   onAddPlant,
   onShowMyGarden,
-  onRemovePlant
+  onRemovePlant,
+  onAddNote
 }

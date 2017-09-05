@@ -7,7 +7,7 @@ const getPlantsSuccess = function (data) {
   console.table(data.plants)
   $('#garden-container').hide()
   $('#all-plants-table').empty()
-  $('#plants-container').show()
+  $('#all-plants-view').show()
   const plantData = data.plants
   const createHTML = function (data) {
     const rawTemplate = $('#plants-template').html()
@@ -43,14 +43,11 @@ const showGardenSuccess = function (data) {
   console.log('garden data = ' + gardenData)
   const createHTML = function (data) {
     const rawTemplate = $('#gardens-template').html()
-    console.log('raw template = ' + rawTemplate)
     const compiledTemplate = Handlebars.compile(rawTemplate)
-    console.log('compiled template = ' + compiledTemplate)
     const context = {
       gardens: data
     }
     const compiledHTML = compiledTemplate(context)
-    console.log('compiled HTML = ' + compiledHTML)
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
@@ -60,34 +57,21 @@ const removePlantSuccess = function (id) {
   console.log('Remove plant success')
 }
 
-const fail = (error) => {
+const removePlantFail = function (error) {
   console.error(error)
 }
 
-  // plantList.forEach(function (plant) {
-  //   $('.plant-query-table').append('<tr><td>' + plant.id + '</td><td>' + plant.name + '</td><td>' + plant.indoor_start + '</td><td>' + plant.growth_period + '</td><td>' + plant.outdoor_start + '</td></tr>')
-  // })
-// }
+const updatePlantSuccess = function (id) {
+  console.log('Plant' + id + 'was updated')
+}
 
-// <script type="all-plants-template" id="all-plants-table">
-//     {{#if plants}}
-//         <table>
-//             {{#each plant}}
-//                 <tr>
-//                     <td>{{id}}</td>
-//                     <td>{{name}}</td>
-//                     <td>{{indoor_start}}</td>
-//                     <td>{{growth_period}}</td>
-//                     <td>{{outdoor_start}}</td>
-//                 </tr>
-//             {{/each}}
-//         </table>
-//     {{else}}
-//         <h3>No plants found!</h3>
-//     {{/if}}
-// </script>
+const updatePlantFail = function (error) {
+  console.error(error)
+}
 
-// TODO create plant-query-table and match up columns with getPlantsSuccess function
+const fail = (error) => {
+  console.error(error)
+}
 
 module.exports = {
   getPlantsSuccess,
@@ -96,5 +80,8 @@ module.exports = {
   addPlantFail,
   showGardenSuccess,
   removePlantSuccess,
+  removePlantFail,
+  updatePlantSuccess,
+  updatePlantFail,
   fail
 }

@@ -53,7 +53,10 @@ const signOutSuccess = (data) => {
   $('.user-signup').show()
   $('.user-logout').hide()
   $('#change-pw').hide()
-  $('.content').hide()
+  $('#my-garden-view').hide()
+  $('#all-plants-view').hide()
+  $('#show-all-plants').hide()
+  $('#show-my-garden').hide()
 }
 
 const signOutFail = (error) => {
