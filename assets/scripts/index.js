@@ -23,21 +23,26 @@ $(() => {
   $('.plant-query').hide()
   $('.add-plants').hide()
   $('.plant-search').hide()
-  $('#start-garden-form').hide()
-  $('.show-plants').hide()
+  $('#show-my-garden').hide()
+  $('#show-all-plants').hide()
   // $('#start-my-garden').hide()
   // Set all user auth jquery
   $('.user-signup').on('submit', authEvents.onSignUp)
   $('.user-login').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
-  $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
-  // $('.add-plants-form').on('submit', console.log('plant form'), gardenEvents.onAddPlant)
-  $('.show-plants').on('submit', gardenEvents.onGetAllPlants)
-  console.log('Adding plant')
+  // is this the click handler for show my garden? not sure so i'm commenting out
+  // $('#start-garden-form').on('submit', gardenEvents.onStartGarden)
+  // click handler to show all plants
+  $('#show-all-plants').on('submit', gardenEvents.onGetAllPlants)
+  $('#show-my-garden').on('submit', gardenEvents.onShowMyGarden)
+  // click handler to add a single plant
   $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
-  $(document).on('click', '.remove-plant-btn', gardenEvents.onRemovePlant)
-  $('#start-garden-form').on('click', gardenEvents.onShowMyGarden)
+  // click handler to remove a single plant
+  $(document).on('click', '.remove-plant-btn', function () {
+    gardenEvents.onRemovePlant
+    $(this).parents('tr').remove()
+  })
 })
 
 // user signs up

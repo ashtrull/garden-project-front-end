@@ -5,6 +5,8 @@ const Handlebars = require('../../handlebars-v4.0.10.js')
 
 const getPlantsSuccess = function (data) {
   console.table(data.plants)
+  $('#garden-container').hide()
+  $('#all-plants-table').empty()
   $('#plants-container').show()
   const plantData = data.plants
   const createHTML = function (data) {
@@ -34,7 +36,9 @@ const addPlantFail = error => {
 
 const showGardenSuccess = function (data) {
   console.log(data)
-  $('#garden-container').show()
+  $('#plants-container').hide()
+  $('#my-garden-table').empty()
+  $('.user-garden').show()
   const gardenData = data.gardens
   console.log('garden data = ' + gardenData)
   const createHTML = function (data) {
@@ -54,7 +58,6 @@ const showGardenSuccess = function (data) {
 
 const removePlantSuccess = function (id) {
   console.log('Remove plant success')
-  $('.all-plants-table #1').remove()
 }
 
 const fail = (error) => {

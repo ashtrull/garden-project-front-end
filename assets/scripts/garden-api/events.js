@@ -6,13 +6,13 @@ const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 
 // when button is clicked search field for plants appears
-const onStartGarden = function (event) {
-  console.log('prevent default')
-  event.preventDefault()
-  console.log('Start my garden')
-  $('.add-plants').show()
-  $('.user-garden').show()
-}
+// const onStartGarden = function (event) {
+//   console.log('prevent default')
+//   event.preventDefault()
+//   console.log('Start my garden')
+//   $('.add-plants').show()
+//   $('.user-garden').show()
+// }
 // user can "get all plants"
 
 const onGetAllPlants = function (event) {
@@ -64,7 +64,7 @@ const onRemovePlant = function (event) {
 
 module.exports = {
   onGetAllPlants,
-  onStartGarden,
+  // onStartGarden,
   onAddPlant,
   onShowMyGarden,
   onRemovePlant
