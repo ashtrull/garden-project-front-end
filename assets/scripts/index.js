@@ -43,6 +43,8 @@ $(() => {
     gardenEvents.onRemovePlant
     $(this).parents('tr').remove()
   })
+  // click handler to add a note to a plant in the garden
+  $(document).on('submit', '#add-note', gardenEvents.onAddNote)
 })
 
 // user signs up

@@ -57,9 +57,22 @@ const removePlant = function (garden) {
   })
 }
 
+const addPlantNote = function (data, garden) {
+  console.log('Token: ' + app.user.token)
+  return $.ajax({
+    url: app.host + '/gardens/' + data.garden.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+      data: data
+    }
+  })
+}
+
 module.exports = {
   allPlants,
   addPlant,
   showGarden,
-  removePlant
+  removePlant,
+  addPlantNote
 }

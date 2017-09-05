@@ -73,6 +73,8 @@
               <th>Garden ID</th>
               <th>Plant ID</th>
               <th>User ID</th>
+              <th>Notes</th>
+              <th>Remove</th>
               <!-- <th>Companion Plants</th> -->
             </tr>
           </thead>
@@ -82,7 +84,14 @@
               <td>{{id}}</td>
               <td>{{plant_id}}</td>
               <td>{{user_id}}</td>
-              <td><button data-id='row {{id}}' type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button></td>
+              <td>
+              <form class="user-garden" id="add-note" method="patch">
+                <input name="plant-note" type="text" value="" placeholder="Plant Notes">
+                <button data-id="{{id}}" type="submit" class="add-note-btn btn btn-primary start">Add Note</button>
+              </form>
+              </td>
+              <td><button data-id="{{id}}" type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button>
+              </td>
             </tr>
             {{/each}}
           </tbody>
@@ -90,21 +99,6 @@
       </script>
     </div>
   </section>
-    <!-- <div class="plant-query" id="plant-query">
-      <h1>Plants</h1>
-      <table class="plant-query" id="plant-query-table">
-        <thead>
-          <tr>
-            <th>Plant ID</th>
-            <th>Name</th>
-            <th>Start Seed Indoors (relative to frost date)</th>
-            <th>Growth Period</th>
-            <th>Plant Outdoors (relative to frost date)</th>
-            <!-<th>Companion Plants</th> -->
-            <!-- <tr>
-        </thead>
-      </table>
-    </div> -->
     <section class="all-plants" id='all-plants-view'>
     <div class="all-plants" id='plants-container'>
     <script class="all-plants" id="plants-template" type="text/x-handlebars-template">
