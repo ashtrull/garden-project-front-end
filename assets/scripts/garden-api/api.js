@@ -60,11 +60,15 @@ const removePlant = function (garden) {
 const addPlantNote = function (data, garden) {
   console.log('Token: ' + app.user.token)
   return $.ajax({
-    url: app.host + '/gardens/' + data.garden.id,
+    url: app.host + '/gardens/' + garden,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + app.user.token,
-      data: data
+      Authorization: 'Token token=' + app.user.token
+    },
+    data: {
+      'garden': {
+        'id': garden
+      }
     }
   })
 }

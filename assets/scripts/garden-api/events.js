@@ -58,14 +58,16 @@ const onRemovePlant = function (event) {
 const onAddNote = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const id = $(this).data('id')
+  const id = this.id
   console.log(data)
   const user = app.user.id
+  console.log ('user: ' + user)
   const garden = id
+  const note = data.plantnote
   console.log('garden-id ' + garden)
-  api.addPlantNote(garden, note)
-    .done(ui.updatePlantSuccess(id))
-    .fail(ui.updatePlantFail)
+  api.addPlantNote(data, garden)
+    .done(ui.addNoteSuccess(id, note))
+    .fail(ui.addNoteFail)
 }
 
 // user can type in a plant name to search for that plants

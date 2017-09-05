@@ -5,7 +5,7 @@ const Handlebars = require('../../handlebars-v4.0.10.js')
 
 const getPlantsSuccess = function (data) {
   console.table(data.plants)
-  $('#garden-container').hide()
+  $('#my-garden-view').hide()
   $('#all-plants-table').empty()
   $('#all-plants-view').show()
   const plantData = data.plants
@@ -36,7 +36,7 @@ const addPlantFail = error => {
 
 const showGardenSuccess = function (data) {
   console.log(data)
-  $('#plants-container').hide()
+  $('#all-plants-view').hide()
   $('#my-garden-table').empty()
   $('.user-garden').show()
   const gardenData = data.gardens
@@ -44,10 +44,12 @@ const showGardenSuccess = function (data) {
   const createHTML = function (data) {
     const rawTemplate = $('#gardens-template').html()
     const compiledTemplate = Handlebars.compile(rawTemplate)
+    console.log('compiled template')
     const context = {
       gardens: data
     }
     const compiledHTML = compiledTemplate(context)
+    console.log('appending HTML')
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
@@ -61,11 +63,12 @@ const removePlantFail = function (error) {
   console.error(error)
 }
 
-const updatePlantSuccess = function (id) {
+const addNoteSuccess = function (id, note) {
+  $(this).parents('tr#notes').append(note)
   console.log('Plant' + id + 'was updated')
 }
 
-const updatePlantFail = function (error) {
+const addNoteFail = function (error) {
   console.error(error)
 }
 
@@ -81,7 +84,7 @@ module.exports = {
   showGardenSuccess,
   removePlantSuccess,
   removePlantFail,
-  updatePlantSuccess,
-  updatePlantFail,
+  addNoteSuccess,
+  addNoteFail,
   fail
 }

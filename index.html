@@ -74,6 +74,7 @@
               <th>Plant ID</th>
               <th>User ID</th>
               <th>Notes</th>
+              <th>Add Note</th>
               <th>Remove</th>
               <!-- <th>Companion Plants</th> -->
             </tr>
@@ -84,13 +85,14 @@
               <td>{{id}}</td>
               <td>{{plant_id}}</td>
               <td>{{user_id}}</td>
+              <td data-id="notes">{{notes}}</td>
               <td>
-              <form class="user-garden" id="add-note" method="patch">
-                <input name="plant-note" type="text" value="" placeholder="Plant Notes">
+              <form class="add-note" id="{{id}}" method="patch">
+                <input name="plantnote" type="text" value="" placeholder="Plant Notes">
                 <button data-id="{{id}}" type="submit" class="add-note-btn btn btn-primary start">Add Note</button>
               </form>
               </td>
-              <td><button data-id="{{id}}" type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button>
+              <td><button data-id="row {{id}}" type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button>
               </td>
             </tr>
             {{/each}}
