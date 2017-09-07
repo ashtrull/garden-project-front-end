@@ -70,8 +70,9 @@ const addNoteSuccess = function (data) {
   console.log('showNoteSuccess')
   console.log(data)
   console.log(data.garden.notes)
-  $('#my-garden-table tr').eq(1).children().eq(3).empty()
-  $('#my-garden-table tr').eq(1).children().eq(3).append(data.garden.notes)
+  console.log(data.garden.id)
+  $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).empty()
+  $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).append(data.garden.notes)
 }
 
 // const showNoteSuccess = function (data) {
