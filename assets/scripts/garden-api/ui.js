@@ -63,18 +63,23 @@ const removePlantFail = function (error) {
   console.error(error)
 }
 
-const addNoteSuccess = function () {
+const addNoteSuccess = function (data) {
   // $('.add-note').append($('td.notes-col'))
   // $('.add-note').val('td.notes-col').append(note)
   console.log('Plant was updated')
-}
-
-const showNoteSuccess = function (data) {
   console.log('showNoteSuccess')
   console.log(data)
-  $('#my-garden-table tr').eq(data.id).children().eq(4).empty()
-  $('#my-garden-table tr').eq(data.id).children().eq(4).append(data.plantnote)
-  // createHTML(gardenData)
+  console.log(data.garden.notes)
+  $('#my-garden-table tr').eq(1).children().eq(3).empty()
+  $('#my-garden-table tr').eq(1).children().eq(3).append(data.garden.notes)
+}
+
+// const showNoteSuccess = function (data) {
+//   // createHTML(gardenData)
+// }
+
+const showNoteFail = function (error) {
+  console.error(error)
 }
 
 const addNoteFail = function (error) {
@@ -95,6 +100,7 @@ module.exports = {
   removePlantFail,
   addNoteSuccess,
   addNoteFail,
-  showNoteSuccess,
+  // showNoteSuccess,
+  showNoteFail,
   fail
 }

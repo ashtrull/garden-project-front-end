@@ -61,16 +61,17 @@ const onAddNote = function (event) {
   const id = this.id
   console.log(data)
   const user = app.user.id
-  console.log ('user: ' + user)
+  console.log('user: ' + user)
   const garden = id
   const note = data.plantnote
   console.log('garden-id ' + garden)
   api.addPlantNote(note, garden)
-    .done(ui.addNoteSuccess)
-    .fail(ui.addNoteFail)
-  api.showPlantNote(garden)
-    .done(ui.showNoteSuccess)
-    .fail(ui.addNoteFail)
+    .then(api.showPlantNote(garden))
+    .then(ui.addNoteSuccess)
+    .catch(ui.addNoteFail)
+  // api.showPlantNote(garden)
+  //   .done(ui.showNoteSuccess)
+  //   .fail(ui.showNoteFail)
 }
 
 // user can type in a plant name to search for that plants
