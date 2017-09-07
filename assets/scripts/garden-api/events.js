@@ -65,8 +65,11 @@ const onAddNote = function (event) {
   const garden = id
   const note = data.plantnote
   console.log('garden-id ' + garden)
-  api.addPlantNote(data, garden)
-    .done(ui.addNoteSuccess(id, note))
+  api.addPlantNote(note, garden)
+    .done(ui.addNoteSuccess)
+    .fail(ui.addNoteFail)
+  api.showPlantNote(garden)
+    .done(ui.showNoteSuccess)
     .fail(ui.addNoteFail)
 }
 

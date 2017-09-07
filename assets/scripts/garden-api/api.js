@@ -57,7 +57,7 @@ const removePlant = function (garden) {
   })
 }
 
-const addPlantNote = function (data, garden) {
+const addPlantNote = function (note, garden) {
   console.log('Token: ' + app.user.token)
   return $.ajax({
     url: app.host + '/gardens/' + garden,
@@ -67,7 +67,23 @@ const addPlantNote = function (data, garden) {
     },
     data: {
       'garden': {
-        'id': garden
+        'notes': note
+      }
+    }
+  })
+}
+
+const showPlantNote = function (garden) {
+  console.log(garden)
+  return $.ajax({
+    url: app.host + '/gardens/' + garden,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    data: {
+      'garden': {
+        'garden_id': app.user.id
       }
     }
   })
@@ -78,5 +94,6 @@ module.exports = {
   addPlant,
   showGarden,
   removePlant,
-  addPlantNote
+  addPlantNote,
+  showPlantNote
 }
