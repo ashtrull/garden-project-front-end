@@ -39,10 +39,7 @@ $(() => {
   // click handler to add a single plant
   $(document).on('click', '.add-plant-btn', gardenEvents.onAddPlant)
   // click handler to remove a single plant
-  $(document).on('click', '.remove-plant-btn', function () {
-    gardenEvents.onRemovePlant
-    $(this).parents('tr').remove()
-  })
+  $(document).on('click', '.remove-plant-btn', gardenEvents.onRemovePlant)
   // click handler to add a note to a plant in the garden
   $(document).on('submit', '.add-note', gardenEvents.onAddNote)
 })

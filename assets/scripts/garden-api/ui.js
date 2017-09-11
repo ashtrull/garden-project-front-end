@@ -6,7 +6,7 @@ const Handlebars = require('../../handlebars-v4.0.10.js')
 const getPlantsSuccess = function (data) {
   console.table(data.plants)
   $('#my-garden-view').hide()
-  $('#all-plants-table').empty()
+  $('#all-plants-table').remove()
   $('#all-plants-view').show()
   const plantData = data.plants
   const createHTML = function (data) {
@@ -37,7 +37,7 @@ const addPlantFail = error => {
 const showGardenSuccess = function (data) {
   console.log(data)
   $('#all-plants-view').hide()
-  $('#my-garden-table').empty()
+  $('#my-garden-table').remove()
   $('.user-garden').show()
   const gardenData = data.gardens
   console.log('garden data = ' + gardenData)
@@ -50,6 +50,7 @@ const showGardenSuccess = function (data) {
     }
     const compiledHTML = compiledTemplate(context)
     console.log('appending HTML')
+    console.log(compiledHTML)
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
@@ -57,15 +58,35 @@ const showGardenSuccess = function (data) {
 
 const removePlantSuccess = function (id) {
   console.log('Remove plant success')
+  $('#' + id).remove()
 }
 
 const removePlantFail = function (error) {
   console.error(error)
 }
 
-const addNoteSuccess = function (id, note) {
-  $(this).parents('tr#notes').append(note)
-  console.log('Plant' + id + 'was updated')
+const addNoteSuccess = function (data) {
+  // $('.add-note').append($('td.notes-col'))
+  // $('.add-note').val('td.notes-col').append(note)
+  console.log('showNoteSuccess')
+  console.log(data)
+  console.log(data.garden.notes)
+  console.log(data.garden.id)
+  console.log(data.garden.plant_id)
+  // $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).empty()
+  // $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).append(data.garden.notes)
+  // $(this).closest('tr').children('td.notes-col').empty
+  // $(this).closest('tr').children('td.notes-col').text(data.garden.notes)
+  $('#' + data.garden.plant_id).children().eq(3).empty
+  $('#' + data.garden.plant_id).children().eq(3).text(data.garden.notes)
+}
+
+// const showNoteSuccess = function (data) {
+//   // createHTML(gardenData)
+// }
+
+const showNoteFail = function (error) {
+  console.error(error)
 }
 
 const addNoteFail = function (error) {
@@ -86,5 +107,7 @@ module.exports = {
   removePlantFail,
   addNoteSuccess,
   addNoteFail,
+  // showNoteSuccess,
+  showNoteFail,
   fail
 }

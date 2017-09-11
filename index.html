@@ -81,11 +81,11 @@
           </thead>
           <tbody>
             {{#each gardens}}
-            <tr>
+            <tr id="{{plant_id}}">
               <td>{{id}}</td>
               <td>{{plant_id}}</td>
               <td>{{user_id}}</td>
-              <td data-id="notes">{{notes}}</td>
+              <td class="notes-col">{{notes}}</td>
               <td>
               <form class="add-note" id="{{id}}" method="patch">
                 <input name="plantnote" type="text" value="" placeholder="Plant Notes">
@@ -97,8 +97,8 @@
             </tr>
             {{/each}}
           </tbody>
-        </table>
-      </script>
+      </table>
+    </script>
     </div>
   </section>
     <section class="all-plants" id='all-plants-view'>
