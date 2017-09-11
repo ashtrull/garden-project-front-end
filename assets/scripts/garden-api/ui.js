@@ -72,8 +72,13 @@ const addNoteSuccess = function (data) {
   console.log(data)
   console.log(data.garden.notes)
   console.log(data.garden.id)
-  $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).empty()
-  $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).append(data.garden.notes)
+  console.log(data.garden.plant_id)
+  // $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).empty()
+  // $('#my-garden-table tr').eq(data.garden.plant_id).children().eq(3).append(data.garden.notes)
+  // $(this).closest('tr').children('td.notes-col').empty
+  // $(this).closest('tr').children('td.notes-col').text(data.garden.notes)
+  $('#' + data.garden.plant_id).children().eq(3).empty
+  $('#' + data.garden.plant_id).children().eq(3).text(data.garden.notes)
 }
 
 // const showNoteSuccess = function (data) {
