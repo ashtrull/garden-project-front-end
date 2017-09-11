@@ -6,7 +6,7 @@ const Handlebars = require('../../handlebars-v4.0.10.js')
 const getPlantsSuccess = function (data) {
   console.table(data.plants)
   $('#my-garden-view').hide()
-  $('#all-plants-table').empty()
+  $('#all-plants-table').remove()
   $('#all-plants-view').show()
   const plantData = data.plants
   const createHTML = function (data) {
@@ -37,7 +37,7 @@ const addPlantFail = error => {
 const showGardenSuccess = function (data) {
   console.log(data)
   $('#all-plants-view').hide()
-  $('#my-garden-table').empty()
+  $('#my-garden-table').remove()
   $('.user-garden').show()
   const gardenData = data.gardens
   console.log('garden data = ' + gardenData)
@@ -50,6 +50,7 @@ const showGardenSuccess = function (data) {
     }
     const compiledHTML = compiledTemplate(context)
     console.log('appending HTML')
+    console.log(compiledHTML)
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
@@ -57,6 +58,7 @@ const showGardenSuccess = function (data) {
 
 const removePlantSuccess = function (id) {
   console.log('Remove plant success')
+  $('#' + id).remove()
 }
 
 const removePlantFail = function (error) {
@@ -66,7 +68,6 @@ const removePlantFail = function (error) {
 const addNoteSuccess = function (data) {
   // $('.add-note').append($('td.notes-col'))
   // $('.add-note').val('td.notes-col').append(note)
-  console.log('Plant was updated')
   console.log('showNoteSuccess')
   console.log(data)
   console.log(data.garden.notes)

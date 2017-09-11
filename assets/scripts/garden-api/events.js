@@ -37,6 +37,7 @@ const onAddPlant = function (event) {
 
 const onShowMyGarden = function (event) {
   event.preventDefault()
+  console.log('Show my garden')
   const user = app.user.id
   api.showGarden(user)
   .done(ui.showGardenSuccess)
@@ -45,6 +46,9 @@ const onShowMyGarden = function (event) {
 
 const onRemovePlant = function (event) {
   event.preventDefault()
+  console.log(event.target)
+  // console.log('data: ' + data)
+  console.log('id: ' + id)
   const id = $(this).data('data-id')
   console.log(id)
   const user = app.user.id
