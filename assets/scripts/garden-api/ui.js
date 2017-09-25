@@ -35,30 +35,25 @@ const addPlantFail = error => {
 }
 
 const showGardenSuccess = function (data) {
-  console.log(data)
   $('#all-plants-view').hide()
   $('#my-garden-table').remove()
   $('.user-garden').show()
   const gardenData = data.gardens
-  console.log('garden data = ' + gardenData)
   const createHTML = function (data) {
     const rawTemplate = $('#gardens-template').html()
     const compiledTemplate = Handlebars.compile(rawTemplate)
-    console.log('compiled template')
     const context = {
       gardens: data
     }
     const compiledHTML = compiledTemplate(context)
-    console.log('appending HTML')
-    console.log(compiledHTML)
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
 }
 
-const removePlantSuccess = function (id) {
+const removePlantSuccess = function (plant) {
   console.log('Remove plant success')
-  $('#' + id).remove()
+  $('#' + plant).remove()
 }
 
 const removePlantFail = function (error) {

@@ -46,16 +46,13 @@ const onShowMyGarden = function (event) {
 
 const onRemovePlant = function (event) {
   event.preventDefault()
-  console.log(event.target)
   // console.log('data: ' + data)
-  console.log('id: ' + id)
-  const id = $(this).data('data-id')
-  console.log(id)
+  console.log(event.target)
+  const plant = $(event.target).attr('data-id')
+  console.log('plant: ' + plant)
   const user = app.user.id
-  const garden = id
-  console.log('garden-id = ' + garden)
-  api.removePlant(garden)
-    .done(ui.removePlantSuccess(id))
+  api.removePlant(plant)
+    .done(ui.removePlantSuccess(plant))
     .fail(ui.removePlantFail)
 }
 
