@@ -35,16 +35,15 @@ const addPlantFail = error => {
 }
 
 const showGardenSuccess = function (data) {
+  console.log('showGardenSuccess ui.js')
   console.log(data)
   $('#all-plants-view').hide()
   $('#my-garden-table').remove()
   $('.user-garden').show()
   const gardenData = data.gardens
-  console.log('garden data = ' + gardenData)
   const createHTML = function (data) {
     const rawTemplate = $('#gardens-template').html()
     const compiledTemplate = Handlebars.compile(rawTemplate)
-    console.log('compiled template')
     const context = {
       gardens: data
     }
