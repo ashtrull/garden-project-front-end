@@ -59,15 +59,13 @@ const onRemovePlant = function (event) {
 const onAddNote = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(id)
-  const id = this.id
-  console.log('this.id: ' + id)
-  console.log(data)
+  console.log("event.target: " + event.target)
+  const garden = $(event.target).attr('data-id')
+  console.log('this garden: ' + garden)
+  console.log('data: ' + data)
   const user = app.user.id
   console.log('user: ' + user)
-  const garden = id
   const note = data.plantnote
-  console.log('garden-id ' + garden)
   api.addPlantNote(note, garden)
     .then(api.showPlantNote(garden))
     .then(ui.addNoteSuccess)
