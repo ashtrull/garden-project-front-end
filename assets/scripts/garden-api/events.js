@@ -46,11 +46,13 @@ const onShowMyGarden = function (event) {
 
 const onRemovePlant = function (event) {
   event.preventDefault()
-  const id = $(this).data('data-id')
+  // console.log('data: ' + data)
+  console.log(event.target)
+  const plant = $(event.target).attr('data-id')
+  console.log('plant: ' + plant)
   const user = app.user.id
-  const garden = id
-  api.removePlant(garden)
-    .done(ui.removePlantSuccess(id))
+  api.removePlant(plant)
+    .done(ui.removePlantSuccess(plant))
     .fail(ui.removePlantFail)
 }
 
@@ -58,15 +60,14 @@ const onAddNote = function (event) {
   console.log('start onAddNote')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log("id: " + id)
-  const id = this.id
   console.log('this.id: ' + id)
-  console.log(data)
+  console.log("event.target: " + event.target)
+  const garden = $(event.target).attr('data-id')
+  console.log('this garden: ' + garden)
+  console.log('data: ' + data)
   const user = app.user.id
   console.log('user: ' + user)
-  const garden = id
   const note = data.plantnote
-  console.log('garden-id ' + garden)
   api.addPlantNote(note, garden)
     .then(api.showPlantNote(garden))
     .then(ui.addNoteSuccess)

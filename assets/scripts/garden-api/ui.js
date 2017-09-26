@@ -48,16 +48,14 @@ const showGardenSuccess = function (data) {
       gardens: data
     }
     const compiledHTML = compiledTemplate(context)
-    console.log('appending HTML')
-    console.log(compiledHTML)
     $('#garden-container').append(compiledHTML)
   }
   createHTML(gardenData)
 }
 
-const removePlantSuccess = function (id) {
+const removePlantSuccess = function (plant) {
   console.log('Remove plant success')
-  $('#' + id).remove()
+  $('#' + plant).remove()
 }
 
 const removePlantFail = function (error) {

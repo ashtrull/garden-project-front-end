@@ -45,11 +45,11 @@ const showGarden = function (user) {
   })
 }
 
-const removePlant = function (garden) {
+const removePlant = function (plant) {
   console.log('Token:' + app.user.token)
-  console.log('Garden: ' + garden)
+  console.log('Garden: ' + plant)
   return $.ajax({
-    url: app.host + '/gardens/' + garden,
+    url: app.host + '/gardens/' + plant,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + app.user.token
