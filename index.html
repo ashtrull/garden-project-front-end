@@ -87,7 +87,7 @@
               <td>{{user_id}}</td>
               <td class="notes-col">{{notes}}</td>
               <td>
-              <form class="add-note" id="{{id}}" method="patch">
+              <form class="add-note" data-id="{{id}}" method="patch">
                 <input name="plantnote" type="text" value="" placeholder="Plant Notes">
                 <button data-id="{{id}}" type="submit" class="add-note-btn btn btn-primary start">Add Note</button>
               </form>
