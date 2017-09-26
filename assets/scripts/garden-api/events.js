@@ -55,9 +55,10 @@ const onRemovePlant = function (event) {
 }
 
 const onAddNote = function (event) {
+  console.log('start onAddNote')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(id)
+  console.log("id: " + id)
   const id = this.id
   console.log('this.id: ' + id)
   console.log(data)
