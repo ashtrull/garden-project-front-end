@@ -1,6 +1,6 @@
 'use strict'
 
-const app = require('../app.js')
+// const app = require('../app.js')
 const Handlebars = require('../../handlebars-v4.0.10.js')
 
 const getPlantsSuccess = function (data) {
@@ -35,6 +35,7 @@ const addPlantFail = error => {
 }
 
 const showGardenSuccess = function (data) {
+  console.log('showGardenSuccess')
   $('#all-plants-view').hide()
   $('#my-garden-table').remove()
   $('.user-garden').show()
@@ -51,6 +52,10 @@ const showGardenSuccess = function (data) {
   createHTML(gardenData)
 }
 
+const showGardenFail = function (error) {
+  console.error(error)
+}
+
 const removePlantSuccess = function (plant) {
   console.log('Remove plant success')
   $('#' + plant).remove()
@@ -63,7 +68,7 @@ const removePlantFail = function (error) {
 const addNoteSuccess = function (data) {
   // $('.add-note').append($('td.notes-col'))
   // $('.add-note').val('td.notes-col').append(note)
-  console.log('showNoteSuccess')
+  console.log('addNoteSuccess')
   console.log(data)
   console.log(data.garden.notes)
   console.log(data.garden.id)
@@ -98,6 +103,7 @@ module.exports = {
   addPlantSuccess,
   addPlantFail,
   showGardenSuccess,
+  showGardenFail,
   removePlantSuccess,
   removePlantFail,
   addNoteSuccess,

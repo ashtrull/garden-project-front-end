@@ -50,7 +50,7 @@ const onRemovePlant = function (event) {
   console.log(event.target)
   const plant = $(event.target).attr('data-id')
   console.log('plant: ' + plant)
-  const user = app.user.id
+  // const user = app.user.id
   api.removePlant(plant)
     .done(ui.removePlantSuccess(plant))
     .fail(ui.removePlantFail)
