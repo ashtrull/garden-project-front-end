@@ -34,7 +34,7 @@ const addPlant = function (plant, user) {
 const showGarden = function (user) {
   console.log(user)
   return $.ajax({
-    url: app.host + '/gardens?user_id=' + app.user.id,
+    url: app.host + '/gardens/' + app.user.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
