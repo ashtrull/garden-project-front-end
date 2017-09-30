@@ -1,6 +1,6 @@
 'use strict'
 const app = require('../app.js')
-const config = require('../config.js')
+// const config = require('../config.js')
 
 const allPlants = function (data) {
   console.log('api show all plants')
@@ -34,14 +34,14 @@ const addPlant = function (plant, user) {
 const showGarden = function (user) {
   console.log('showGarden api.js')
   return $.ajax({
-    url: app.host + '/gardens?user_id=' + app.user.id,
+    url: app.host + '/gardens',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    },
-    data: {
-      'user_id': app.user.id
     }
+    // data: {
+    //   'user_id': app.user.id
+    // }
   })
 }
 

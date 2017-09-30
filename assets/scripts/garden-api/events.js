@@ -50,7 +50,7 @@ const onRemovePlant = function (event) {
   console.log(event.target)
   const plant = $(event.target).attr('data-id')
   console.log('plant: ' + plant)
-  const user = app.user.id
+  // const user = app.user.id
   api.removePlant(plant)
     .done(ui.removePlantSuccess(plant))
     .fail(ui.removePlantFail)
@@ -68,6 +68,7 @@ const onAddNote = function (event) {
   const user = app.user.id
   console.log('user: ' + user)
   const note = data.plantnote
+  console.log('note: ' + note)
   api.addPlantNote(note, garden)
     .then(api.showPlantNote(garden))
     .then(ui.addNoteSuccess)
