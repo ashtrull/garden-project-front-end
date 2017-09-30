@@ -39,7 +39,7 @@ const onShowMyGarden = function (event) {
   event.preventDefault()
   console.log('onShowMyGarden events.js')
   const user = app.user.id
-  api.showGarden(user)
+  api.showGarden()
   .done(ui.showGardenSuccess)
   .fail(ui.showGardenFail)
 }
