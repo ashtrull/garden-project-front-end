@@ -34,11 +34,7 @@ const addPlant = function (plant, user) {
 const showGarden = function () {
   console.log('showGarden api.js')
   return $.ajax({
-<<<<<<< HEAD
     url: app.host + '/gardens',
-=======
-    url: app.host + '/gardens/' + app.user.id,
->>>>>>> Removed (user) from showGarden
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
