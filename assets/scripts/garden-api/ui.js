@@ -41,6 +41,10 @@ const showGardenSuccess = function (data) {
   $('#my-garden-table').remove()
   $('.user-garden').show()
   const gardenData = data.gardens
+  console.log(data)
+  console.log(data.gardens)
+  console.log(data.gardens.plant)
+  console.log(data.plants)
   const createHTML = function (data) {
     const rawTemplate = $('#gardens-template').html()
     const compiledTemplate = Handlebars.compile(rawTemplate)
