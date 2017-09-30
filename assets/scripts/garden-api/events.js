@@ -37,7 +37,7 @@ const onAddPlant = function (event) {
 
 const onShowMyGarden = function (event) {
   event.preventDefault()
-  console.log('Show my garden')
+  console.log('onShowMyGarden events.js')
   const user = app.user.id
   api.showGarden(user)
   .done(ui.showGardenSuccess)
@@ -57,10 +57,11 @@ const onRemovePlant = function (event) {
 }
 
 const onAddNote = function (event) {
-  console.log('start on AddNote')
+  console.log('start onAddNote')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('event.target: ' + event.target)
+  console.log('this.id: ' + id)
+  console.log("event.target: " + event.target)
   const garden = $(event.target).attr('data-id')
   console.log('this garden: ' + garden)
   console.log('data: ' + data)

@@ -32,7 +32,7 @@ const addPlant = function (plant, user) {
 }
 
 const showGarden = function (user) {
-  console.log(user)
+  console.log('showGarden api.js')
   return $.ajax({
     url: app.host + '/gardens',
     method: 'GET',
