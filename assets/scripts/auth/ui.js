@@ -34,6 +34,7 @@ const signInFail = () => {
 
 const changePasswordSuccess = (data) => {
   // app.user = data.user
+  console.log(data.user)
   console.log('Password successfully changed.')
   $('#sign-in-prompt').text('Password successfully changed. Signed in as' + data.user.email)
 }

@@ -36,7 +36,7 @@ const addPlantFail = error => {
 
 const showGardenSuccess = function (data) {
   console.log('showGardenSuccess ui.js')
-  console.log(data)
+  console.table(data)
   $('#all-plants-view').hide()
   $('#my-garden-table').remove()
   $('.user-garden').show()
