@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Seed Sower</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/scss" href="./assets/styles/index.scss">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Dosis" rel="stylesheet">
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <div class="header-bar">
+    <h1>Seed Sower</h1>
+  </div>
+
+  <h3>The online app for planning and planting your garden!</h3>
+  <div class="col-xs-2 right sidebar">
+    <a href="http://imgur.com/n3YQG3y"><img src="http://i.imgur.com/n3YQG3y.jpg" title="source: imgur.com" /></a>
+    <h4 id="sign-in-prompt">Sign in to create your garden!</h4>
+    <form class="user-signup">
+      <h4> Create an Account </h4>
+      <input name="credentials[email]" type="text" value="" placeholder="Email">
+      <input name="credentials[password]" type="password" value="" placeholder="Password">
+      <input name="credentials[password_confirmation]" type="password" value="" placeholder="Re-enter Password">
+      <button type="submit" name="submit" class="btn btn-default" value="Sign Up!" id="create-button">Create Account</button>
+    </form>
+    <form class="user-login" id="user-login">
+      <h4> Already have an account? </h4>
+      <input name="credentials[email]" type="text" value="" placeholder="Email">
+      <input name="credentials[password]" type="password" value="" placeholder="Password">
+      <button type="submit" name="submit" class="btn btn-default" value="Sign In!" id="sign-in-button">Sign In</button>
+    </form>
+    <form class="user-logout" id="user-logout">
+      <button type="submit" value="Sign Out!" class="btn btn-default" id="sign-out-button">Sign Out</button>
+    </form>
+    <form class="change-password" id="change-pw">
+      <input name="credentials[email]" type="text" value="" placeholder="Email">
+      <input name="credentials[password]" type="password" value="" placeholder="Password">
+      <input name="credentials[newpassword]" type="password" value="" placeholder="New Password">
+      <button type="submit" value="Change Password" class="btn btn-default" id="change-pw-button">Change Password</button>
+    </form>
+  </div>
+  <div class="col-xs-8 center content">
+    <a href="http://imgur.com/n3YQG3y"><img src="http://i.imgur.com/n3YQG3y.jpg" title="source: imgur.com" /></a>
+    <div class="content">
+      <!-- <form id="start-garden-form">
+        <button type="submit" class="btn btn-primary start" id="start-my-garden" name="button">Show My Garden</button>
+      </form> -->
+      <form class="plant-search" action="search.php?go" method="post" id="plant-search-form">
+        <input type="text" name="plant-name" value="" placeholder="Plant Name">
+        <button type="submit" class="btn btn-primary start" name="submit" value="Search">Search for Plants</button>
+      </form>
+      <form class="show-plants" id="show-all-plants" method="get">
+        <button type="submit" class="show-plants btn btn-primary start" id="show-plants-btn" name="button">Show All Plants</button>
+      </form>
+    </div>
+    <form class="show-garden" id="show-my-garden" method="get">
+      <button type="submit" class="btn btn-primary start" name="button">Show My Garden</button>
+    </form>
+    <section class="user-garden" id="my-garden-view">
+    <div class="user-garden" id="garden-container">
+    <h3 class="user-garden" id="my-garden-header">My Garden</h3>
+      <script id="gardens-template" type="text/x-handlebars-template">
+        <table class="user-garden" id="my-garden-table">
+          <thead>
+            <tr>
+              <th>Garden ID</th>
+              <th>Plant ID</th>
+              <th>User ID</th>
+              <th>Notes</th>
+              <th>Add Note</th>
+              <th>Remove</th>
+              <!-- <th>Companion Plants</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            {{#each gardens}}
+            <tr id="{{plant_id}}">
+              <td>{{id}}</td>
+              <td>{{plant_id}}</td>
+              <td>{{user_id}}</td>
+              <td class="notes-col">{{notes}}</td>
+              <td>
+              <form class="add-note" data-id="{{id}}" method="patch">
+                <input name="plantnote" type="text" value="" placeholder="Plant Notes">
+                <button data-id="{{id}}" data-plant-id={{plant_id}} type="submit" class="add-note-btn btn btn-primary start">Add Note</button>
+              </form>
+              </td>
+              <td><button data-id="{{id}}" data-plant-id={{plant_id}} type="button" class="remove-plant-btn btn btn-primary start">Remove {{name}} From My Garden</button>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+      </table>
+    </script>
+    </div>
+  </section>
+    <section class="all-plants" id='all-plants-view'>
+    <div class="all-plants" id='plants-container'>
+    <script class="all-plants" id="plants-template" type="text/x-handlebars-template">
+      <table class="all-plants" id="all-plants-table">
+        <thead>
+          <tr>
+            <th>Plant ID</th>
+            <th>Name</th>
+            <th>Start Seed Indoors (relative to frost date)</th>
+            <th>Indoor Growth Period</th>
+            <th>Plant Outdoors (relative to frost date)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each plants}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{indoor_start}}</td>
+            <td>{{growth_period}}</td>
+            <td>{{outdoor_start}}</td>
+            <td><button data-id='{{id}}' type="button" class="add-plant-btn btn btn-primary start">Add {{name}} To My Garden</button></td>
+            <!-- <form id='{{id}}' class='add-plants-table-form'></form></td> -->
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+  </div>
+</section>
+</script>
+  <script src="assets/handlebars-v4.0.10.js"></script>
+
+</body>
+
+</html>
