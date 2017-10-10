@@ -32,11 +32,10 @@ const signInFail = () => {
   $('#sign-in-prompt').text('Email/password combination not found')
 }
 
-const changePasswordSuccess = (data) => {
-  // app.user = data.user
-  console.log(data.user)
+const changePasswordSuccess = () => {
+  console.log(app.user)
   console.log('Password successfully changed.')
-  $('#sign-in-prompt').text('Password successfully changed. Signed in as' + data.user.email)
+  $('#sign-in-prompt').text('Password successfully changed. Signed in as' + app.user.email)
 }
 
 const changePasswordFail = () => {
