@@ -48,7 +48,7 @@ const onRemovePlant = function (event) {
   // console.log('data: ' + data)
   console.log(event.target)
   const plant = $(event.target).attr('data-plant-id')
-  const garden = $(event.target).attri('data-id')
+  const garden = $(event.target).attr('data-id')
   console.log('plant: ' + plant)
   // const user = app.user.id
   api.removePlant(garden)
